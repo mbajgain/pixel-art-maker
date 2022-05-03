@@ -5,11 +5,13 @@ body {
 h1 {
     font-family: Monoton;
     font-size: 70px;
+    color: #02B3E4;
     margin: 0.2em;
 }
 
 h2 {
     margin: 1em 0 0.25em;
+    color: #515757;
 }
 
 h2:first-of-type {
@@ -29,17 +31,12 @@ table {
 
 tr {
     height: 20px;
-    border: 1px solid black;
+    
 }
 
 td {
     width: 20px;
-    border: 1px solid black;
-}
-
-div {
-    width: 20px;
-    border: 1px solid black;
+    
 }
 
 input[type=number] {
