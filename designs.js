@@ -2,7 +2,10 @@ const canvas = document.getElementById("pixelCanvas");
 const sizePicker = document.getElementById("sizePicker");
 const button = document.getElementById("submit");
 
-// Code to select and store color
+/** 
+ * @desc Code to select and store color
+ * followed by function to update color upon user selection
+ * */ 
 var userColor;
 var defaultColor = "#000000";
 
@@ -24,32 +27,33 @@ function updateFirst(event) {
   }
 }
 
-// Code to update color
 function updateAll(event) {
     document.querySelectorAll("td").forEach(function(p) {
       p.style.color = event.target.value;
     });
   }
 
-
+/**
+  * @desc create a grid of squares 
+  * @param int $width - number of squares representing the width of the grid
+  * @param int $height - number of squares representing the height of the grid
+  * initialized with a while loop to reset the table
+  * for loops to populate the rows and columns, to then make individual cells for pixels
+  * event listener added to cells to add color on mousedown
+*/
 function makeGrid() {
-    // While loop to reset the table
     let firstChild = canvas.firstChild; 
     while (canvas.firstChild) {
         canvas.removeChild(canvas.firstChild);
     }
-    // Code to populate the table
     let yAxis = document.getElementById("inputHeight").value;
     let xAxis = document.getElementById("inputWidth").value;
-    // Create the table rows
     for (let y = 1; y <= yAxis; y++) {
         let row = document.createElement('tr');
         canvas.appendChild(row);
-        // Create the cells for each row
         for (let x = 1; x <= xAxis; x++) {
             let cell = document.createElement('td');
             row.appendChild(cell);
-            // Adds color to cells upon selecting cells
             cell.addEventListener('mousedown', function() {
                 const userColor = document.getElementById("colorPicker").value;
                 this.style.backgroundColor = userColor;
@@ -58,7 +62,10 @@ function makeGrid() {
     }
     
 }
-// Function ensures "submit" does not refresh page, but populates grid
+/**
+ * @desc function ensures "submit" does not refresh page, but populates grid
+ * @param sizePicker to determine the size of the grid
+ *  */ 
 document.getElementById("sizePicker").addEventListener("submit", function(grid) {
     grid.preventDefault();
     makeGrid();
